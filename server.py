@@ -204,13 +204,22 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(200, {"status": "ok", "app": APP_NAME, "version": APP_VERSION})
             return
         if path == "/privacy":
-            self._send_text(200, "No tracking, no storage, and no personal data retention.")
+            self._send_text(
+                200,
+                'Privacy Policy\n\nThis service ("structured-output-fixer") processes user-provided text inputs to repair and normalize structured JSON outputs.\n\nData Usage:\n- We only process the input text provided in each request.\n- No personal data is intentionally collected.\n- No data is stored after processing.\n- No tracking, logging, or analytics are performed.\n\nData Retention:\n- All processing is ephemeral.\n- No request data is persisted on the server.\n\nThird Parties:\n- This service does not share data with any third parties.\n\nContact:\nIf you have any questions, please contact:\nsidcraigau@gmail.com',
+            )
             return
         if path == "/terms":
-            self._send_text(200, "Use at your own risk. Service provides deterministic JSON repair only.")
+            self._send_text(
+                200,
+                'Terms of Service\n\nThis service ("structured-output-fixer") is provided for structured JSON repair only.\n\nUsage Rules:\n- Use this service at your own risk.\n- Do not rely on this service for legal, medical, financial, or safety-critical decisions.\n- The service performs minimal deterministic repair only.\n- The service does not infer, invent, or guarantee factual correctness of input content.\n\nAvailability:\n- Service may change, be updated, or be discontinued at any time without notice.\n\nLiability:\n- The provider is not responsible for any loss, damage, or downstream issues resulting from use of this service.\n\nContact:\nFor support or questions:\nsidcraigau@gmail.com',
+            )
             return
         if path == "/support":
-            self._send_text(200, f"Support: {SUPPORT_EMAIL}")
+            self._send_text(
+                200,
+                "Support\n\nService: structured-output-fixer\nContact: sidcraigau@gmail.com\n\nFor help, bug reports, or policy questions, please email the address above.",
+            )
             return
         if path == "/.well-known/openai-apps-challenge":
             self._send_text(200, os.getenv("OPENAI_APPS_CHALLENGE", ""))
