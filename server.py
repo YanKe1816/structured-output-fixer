@@ -222,7 +222,7 @@ class Handler(BaseHTTPRequestHandler):
             )
             return
         if path == "/.well-known/openai-apps-challenge":
-            self._send_text(200, os.getenv("OPENAI_APPS_CHALLENGE", ""))
+            self._send_text(200, "Dy8xICL5HRlpX9tCyBSxP9ibVWweh4c_9WROpp-y2BQ")
             return
         if path == "/mcp":
             manifest = {
